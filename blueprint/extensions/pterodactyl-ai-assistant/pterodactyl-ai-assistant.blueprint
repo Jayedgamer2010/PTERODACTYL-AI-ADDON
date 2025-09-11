@@ -38,27 +38,27 @@
     },
     "files": {
         "app": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/app",
+            "source": "app",
             "target": "app/Extensions/AIAssistant"
         },
         "config": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/config",
+            "source": "config",
             "target": "config/extensions/ai-assistant"
         },
         "database": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/database",
+            "source": "database",
             "target": "database/extensions/ai-assistant"
         },
         "resources": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/resources",
+            "source": "resources",
             "target": "resources/extensions/ai-assistant"
         },
         "routes": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/routes",
+            "source": "routes",
             "target": "routes/extensions/ai-assistant"
         },
         "public": {
-            "source": "app/BlueprintFramework/Extensions/AIAssistant/public",
+            "source": "public",
             "target": "public/extensions/ai-assistant"
         }
     },
