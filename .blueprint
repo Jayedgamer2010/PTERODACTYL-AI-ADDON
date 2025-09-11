@@ -1,0 +1,84 @@
+{
+    "name": "pterodactyl-ai-assistant",
+    "version": "1.0.0",
+    "type": "addon",
+    "description": "AI Assistant Blueprint Addon for Pterodactyl Panel",
+    "author": "JayedGamer2010",
+    "website": "https://github.com/Jayedgamer2010",
+    "license": "MIT",
+    "target": {
+        "blueprint": "^1.0",
+        "php": "^8.2",
+        "panel": "^1.0"
+    },
+    "provides": {
+        "permissions": [
+            "ai.use",
+            "ai.admin"
+        ],
+        "migrations": [
+            "database/migrations/*.php"
+        ],
+        "seeders": [
+            "database/seeders/AIAssistantSeeder.php"
+        ],
+        "config": [
+            "config/ai-assistant.php"
+        ],
+        "providers": [
+            "Blueprint\\Extensions\\AIAssistant\\AIAssistantServiceProvider",
+            "Blueprint\\Extensions\\AIAssistant\\Providers\\AIAssistantServiceProvider",
+            "Blueprint\\Extensions\\AIAssistant\\Providers\\AssetsServiceProvider"
+        ],
+        "models": [
+            "Blueprint\\Extensions\\AIAssistant\\Models\\AIChatHistory",
+            "Blueprint\\Extensions\\AIAssistant\\Models\\AIMetric",
+            "Blueprint\\Extensions\\AIAssistant\\Models\\AISetting"
+        ]
+    },
+    "files": {
+        "app": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/app",
+            "target": "app/Extensions/AIAssistant"
+        },
+        "config": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/config",
+            "target": "config/extensions/ai-assistant"
+        },
+        "database": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/database",
+            "target": "database/extensions/ai-assistant"
+        },
+        "resources": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/resources",
+            "target": "resources/extensions/ai-assistant"
+        },
+        "routes": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/routes",
+            "target": "routes/extensions/ai-assistant"
+        },
+        "public": {
+            "source": "app/BlueprintFramework/Extensions/AIAssistant/public",
+            "target": "public/extensions/ai-assistant"
+        }
+    },
+    "dependencies": {
+        "php": {
+            "openai-php/client": "^0.16",
+            "ratchet/pawl": "^0.4.3",
+            "react/socket": "^1.16",
+            "firebase/php-jwt": "^6.11",
+            "predis/predis": "^2.4"
+        },
+        "composer": {
+            "require": {
+                "php": "^8.2"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Blueprint\\Extensions\\AIAssistant\\": "app/Extensions/AIAssistant"
+        }
+    }
+}
