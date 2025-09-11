@@ -1,35 +1,92 @@
-<!-- Header -->
-<br/><p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/BlueprintFramework/framework/assets/103201875/c0072c61-0135-4931-b5fa-ce4ee7d79f4a">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/BlueprintFramework/framework/assets/103201875/a652a6e7-b53f-4dcd-ae4e-2051f5c9c7b9">
-    <img alt="Blueprint" src="https://github.com/BlueprintFramework/framework/assets/103201875/c0072c61-0135-4931-b5fa-ce4ee7d79f4a" height="30">
-  </picture>
-  <br/>
-  Open-source modding framework for the Pterodactyl panel.
-  <br/><br/>
-  <a href="https://blueprint.zip">Website</a> <b>·</b>
-  <a href="https://discord.com/servers/blueprint-1063548024825057451">Community</a> <b>·</b>
-  <a href="https://blueprint.zip/docs">Documentation</a>
-</p>
+# Pterodactyl AI Assistant Blueprint Addon
 
+An AI-powered assistant addon for the Pterodactyl Panel, providing intelligent support and automation features.
 
+## Features
 
-<!-- Introduction -->
-<br/><h2 align="center">🧩 Introduction</h2>
+- AI-powered chat interface
+- Server performance analysis and recommendations
+- Command suggestions and automation
+- User interaction history tracking
+- Metric collection and analysis
+- WebSocket support for real-time communication
+- Rate limiting and caching support
+- Configurable AI provider settings
 
-**Blueprint** is an open-source extension framework/manager for Pterodactyl. Developers can create versatile, easy-to-install extensions that system administrators can install within minutes *(usually even seconds!)* without having to custom-code compatibility across multiple panel modifications.
+## Requirements
 
-We aim to introduce new developers to Blueprint with easy to understand guides, documentation, developer commands, community support and more.
+- PHP 8.2 or higher
+- Pterodactyl Panel 1.0 or higher
+- Composer
+- Node.js and NPM
+- OpenAI API key
 
-[Learn more about **Blueprint**](https://blueprint.zip) or [find your **next extension**](https://blueprint.zip/browse).
+## Installation
 
+1. Download the latest release
+2. Extract to your Pterodactyl installation directory
+3. Run the installation script:
 
+```bash
+chmod +x install.sh
+./install.sh
+```
 
-<!-- Showcase -->
-<br/><h2 align="center">📷 Showcase</h2>
+4. Configure your OpenAI API key in the admin panel
 
-![screenshots](https://github.com/BlueprintFramework/framework/assets/103201875/cb66943e-a60e-44e5-afd4-90475b106244)
+## Configuration
+
+The addon can be configured through the admin panel or by editing the `config/ai-assistant.php` file.
+
+### Available Settings
+
+- OpenAI Configuration
+  - Model selection
+  - Maximum tokens
+  - Temperature
+- WebSocket Settings
+  - Enable/Disable
+  - Port configuration
+- Rate Limiting
+  - Enable/Disable
+  - Request limits
+- Caching
+  - TTL configuration
+
+## Database Structure
+
+The addon uses three main tables:
+
+1. `ai_chat_history`
+   - Stores user-AI interactions
+   - Links to users and servers
+   - Tracks context and responses
+
+2. `ai_metrics`
+   - Collects performance metrics
+   - Server-specific measurements
+   - Time-series data
+
+3. `ai_settings`
+   - Stores configuration values
+   - System-wide settings
+   - Cached preferences
+
+## Security
+
+The addon includes several security features:
+
+- Rate limiting to prevent abuse
+- JWT authentication for WebSocket connections
+- Input validation and sanitization
+- Permission-based access control
+
+## Permissions
+
+Two main permission nodes are available:
+
+- `ai.use` - Allows users to interact with the AI assistant
+- `ai.admin` - Grants access to configuration and management features
 
 
 

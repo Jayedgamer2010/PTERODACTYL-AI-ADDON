@@ -1,0 +1,146 @@
+{
+  "name": "pterodactyl-ai-assistant-tests",
+  "version": "2.0.0",
+  "testConfigs": {
+    "phpunit": {
+      "bootstrap": "tests/bootstrap.php",
+      "colors": true,
+      "testdox": true,
+      "coverage": {
+        "enabled": true,
+        "includeUncoveredFiles": true
+      }
+    },
+    "testsprite": {
+      "parallel": true,
+      "timeout": 30000,
+      "retries": 3,
+      "reporters": ["testdox", "html"]
+    }
+  },
+  "scenarios": {
+    "aiAssistant": {
+      "basic": [
+        {
+          "name": "User Chat Query",
+          "input": {
+            "type": "chat",
+            "message": "How do I optimize my server performance?",
+            "role": "user"
+          },
+          "expected": {
+            "status": "success",
+            "contains": ["performance", "optimization", "server"]
+          }
+        },
+        {
+          "name": "Admin Performance Query",
+          "input": {
+            "type": "chat",
+            "message": "Show detailed server metrics",
+            "role": "admin"
+          },
+          "expected": {
+            "status": "success",
+            "contains": ["CPU", "memory", "disk", "network"]
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "name": "Multi-Provider Failover",
+          "input": {
+            "type": "chat",
+            "message": "Analyze server logs",
+            "provider": {
+              "primary": "openai",
+              "failover": "anthropic"
+            }
+          },
+          "expected": {
+            "status": "success",
+            "response": true
+          }
+        },
+        {
+          "name": "Real-time Metrics Stream",
+          "input": {
+            "type": "websocket",
+            "action": "subscribe",
+            "target": "server-metrics"
+          },
+          "expected": {
+            "status": "success",
+            "streamType": "metrics",
+            "updateInterval": 5000
+          }
+        }
+      ],
+      "security": [
+        {
+          "name": "Rate Limiting",
+          "input": {
+            "type": "chat",
+            "burst": 100,
+            "interval": 60
+          },
+          "expected": {
+            "status": "limited",
+            "after": 50
+          }
+        },
+        {
+          "name": "Permission Validation",
+          "input": {
+            "type": "chat",
+            "message": "Delete all servers",
+            "role": "user"
+          },
+          "expected": {
+            "status": "denied",
+            "error": "insufficient_permissions"
+          }
+        }
+      ]
+    }
+  },
+  "mocks": {
+    "openai": {
+      "enabled": true,
+      "responses": {
+        "default": {
+          "message": "This is a test response",
+          "role": "assistant"
+        }
+      }
+    },
+    "websocket": {
+      "enabled": true,
+      "events": {
+        "metrics": {
+          "cpu": 45,
+          "memory": 2048,
+          "disk": 80
+        }
+      }
+    }
+  },
+  "environment": {
+    "APP_ENV": "testing",
+    "CACHE_DRIVER": "array",
+    "DB_CONNECTION": "sqlite",
+    "DB_DATABASE": ":memory:"
+  }
+}
+          "providers": ["openai", "claude", "deepseek"],
+          "expectFailover": true
+        },
+        {
+          "name": "Real-time Metrics Test",
+          "input": "Monitor CPU usage",
+          "expectWebSocket": true
+        }
+      ]
+    }
+  }
+}

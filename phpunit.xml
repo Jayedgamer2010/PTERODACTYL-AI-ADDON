@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="app/BlueprintFramework/Extensions/AIAssistant/bootstrap.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="AI Assistant">
+            <directory suffix="Test.php">./app/BlueprintFramework/Extensions/AIAssistant/Tests</directory>
+        </testsuite>
+    </testsuites>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./app/BlueprintFramework/Extensions/AIAssistant</directory>
+        </include>
+        <exclude>
+            <directory>./app/BlueprintFramework/Extensions/AIAssistant/Tests</directory>
+        </exclude>
+    </coverage>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+    </php>
+</phpunit>

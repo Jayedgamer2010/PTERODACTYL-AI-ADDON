@@ -1,0 +1,53 @@
+{
+    "name": "pterodactyl-ai-assistant",
+    "version": "1.0.0",
+    "description": "AI Assistant Blueprint Addon for Pterodactyl Panel",
+    "type": "blueprint-extension",
+    "homepage": "https://github.com/Jayedgamer2010/pterodactyl-ai-addon",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.8",
+        "ratchet/pawl": "^0.4.3",
+        "react/socket": "^1.16",
+        "firebase/php-jwt": "^6.11",
+        "predis/predis": "^2.4",
+        "openai-php/client": "^0.16",
+        "laravel/framework": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blueprint\\Extensions\\AIAssistant\\": "app/BlueprintFramework/Extensions/AIAssistant/app/"
+        }
+    },
+    "extra": {
+        "blueprint": {
+            "name": "AI Assistant",
+            "author": "JayedGamer2010",
+            "website": "https://github.com/Jayedgamer2010",
+            "description": "AI-powered assistant for Pterodactyl Panel",
+            "target-version": "^1.0",
+            "setup": {
+                "migration": true,
+                "seeder": true,
+                "config": "ai-assistant.php",
+                "providers": [
+                    "Blueprint\\Extensions\\AIAssistant\\Providers\\AIAssistantServiceProvider"
+                ],
+                "permissions": [
+                    "ai.use",
+                    "ai.admin"
+                ]
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "platform": {
+            "php": "8.2"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
