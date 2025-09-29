@@ -1,0 +1,58 @@
+info:
+  name: "AI Assistant with Queue System"
+  identifier: "aiassistant"
+  description: "Advanced AI-powered assistant for Pterodactyl Panel with intelligent code generation, queue management, and comprehensive automation capabilities"
+  version: "2.0.0"
+  target: "1.11.11"
+  author: "Jayed Sheikh"
+  icon: "bx-bot"
+  website: "https://github.com/Jayedgamer2010/PTERODACTYL-AI-ADDON"
+
+requests:
+  routers:
+    web: routes/web.php
+  views:
+    admin: 
+      - resources/views/queue.blade.php
+      - resources/views/admin/ai/config.blade.php
+  controllers:
+    admin: 
+      - app/Http/Controllers/QueueController.php
+      - app/Http/Controllers/AIConfigController.php
+  css:
+    admin: resources/assets/css/ai-chat-widget.css
+  js:
+    admin: resources/assets/js/ai-chat-widget.js
+
+database:
+  migrations:
+    - database/migrations/2025_01_01_000000_create_queues_table.php
+    - database/migrations/2025_01_02_000000_create_ai_conversations_table.php
+    - database/migrations/2025_01_02_000001_create_generated_code_table.php
+    - database/migrations/2025_01_02_000002_create_code_executions_table.php
+    - database/migrations/2025_01_02_000003_create_ai_configs_table.php
+    - database/migrations/2025_01_02_000004_create_code_templates_table.php
+    - database/migrations/2025_01_02_000005_create_ai_user_permissions_table.php
+    - database/migrations/2025_01_02_000006_create_ai_permission_logs_table.php
+
+services:
+  - app/Services/AI/AIProviderService.php
+  - app/Services/AI/CodeGenerationService.php
+  - app/Services/AI/PermissionService.php
+  - app/Services/AI/SandboxService.php
+
+websocket:
+  server: websocket/server.js
+  package: websocket/package.json
+
+features:
+  - "🤖 Multi-provider AI integration (OpenAI, Claude, DeepSeek, Gemini, Groq, Ollama)"
+  - "💬 Real-time floating chat widget with WebSocket support"
+  - "🔧 Intelligent code generation with safety validation"
+  - "⚡ Sandbox code execution environment"
+  - "🛡️ Comprehensive permission system with role-based access"
+  - "📊 Advanced analytics and cost monitoring"
+  - "🎯 Context-aware responses based on server/user data"
+  - "📝 Code templates and reusable snippets"
+  - "🔒 Enterprise-grade security and audit logging"
+  - "📱 Mobile-responsive design"

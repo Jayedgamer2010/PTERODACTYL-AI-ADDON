@@ -1,0 +1,57 @@
+/* QueueAI System Styles */
+.queue-position h2 {
+    color: #3c8dbc !important;
+    font-weight: bold;
+}
+
+.ai-chat-section {
+    border-top: 1px solid #f4f4f4;
+    padding-top: 15px;
+}
+
+.code-block {
+    margin-top: 10px;
+}
+
+.code-header {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+
+.code-block pre {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 15px;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.info-box-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-info {
+    border-left: 4px solid #3c8dbc;
+}
+
+.no-queue i {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .queue-position h2 {
+        font-size: 28px;
+    }
+    
+    .info-box {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,46 @@
+info:
+  name: "QueueAI System"
+  identifier: "queueaisystem"
+  description: "Complete AI-powered assistant with queue management for Pterodactyl Panel - includes intelligent code generation, real-time chat, and comprehensive automation"
+  version: "1.0.0"
+  target: "1.11.11"
+  author: "Jayed Sheikh"
+  icon: "bx-bot"
+  website: "https://github.com/Jayedgamer2010/PTERODACTYL-AI-ADDON"
+
+admin:
+  controller:
+    - app/Http/Controllers/QueueAIController.php
+  view:
+    - resources/views/admin/dashboard.blade.php
+  route:
+    - routes/web.php
+  middleware:
+    - app/Http/Middleware/ValidateQueueAIRequest.php
+  provider:
+    - app/Providers/QueueAIServiceProvider.php
+  service:
+    - app/Services/QueueAI/CacheService.php
+  css:
+    - resources/assets/css/queueai-system.css
+  js:
+    - resources/assets/js/queueai-system.js
+
+database:
+  migrations:
+    - database/migrations/2025_01_01_000000_create_queues_table.php
+    - database/migrations/2025_01_01_000001_create_ai_conversations_table.php
+    - database/migrations/2025_01_01_000002_create_generated_code_table.php
+    - database/migrations/2025_01_01_000003_create_code_executions_table.php
+    - database/migrations/2025_01_01_000004_create_ai_configs_table.php
+    - database/migrations/2025_01_01_000005_create_ai_user_permissions_table.php
+
+features:
+  - "🤖 Multi-provider AI integration (OpenAI, Claude, DeepSeek, Gemini, Groq)"
+  - "💬 Real-time floating chat widget with WebSocket support"
+  - "🔧 Intelligent code generation with safety validation"
+  - "📋 Queue management system with position tracking"
+  - "🛡️ Role-based permissions and security controls"
+  - "📊 Analytics dashboard with usage monitoring"
+  - "⚡ Sandbox code execution environment"
+  - "📱 Mobile-responsive design"
